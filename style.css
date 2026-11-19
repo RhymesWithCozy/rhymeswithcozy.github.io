@@ -513,7 +513,8 @@ body { font-size: 1.1875rem; }
   .has-mobile-menu .masthead h1 {
     --wordmark-open: min(65vw, 244px);
     --wordmark-closed: 140px;
-    margin-top: 3px;
+    align-self: center;
+    margin-top: 0;
   }
   .has-mobile-menu .menu-toggle {
     display: flex;
