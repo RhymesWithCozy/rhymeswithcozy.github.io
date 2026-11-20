@@ -48,7 +48,7 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
     for (const entry of entries) {
       const row = entry.target;
-      const repeats = row.matches(".process li, .pricing-options li");
+      const repeats = row.matches(".process li, .pricing-options li, .excerpts .excerpt");
 
       if (!entry.isIntersecting) {
         if (repeats) row.classList.remove("has-entered");
@@ -61,7 +61,7 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
     }
   }, { threshold: [0, 0.12] });
 
-  document.querySelectorAll(".interview-video-grid, .about-portrait, .process li, .pricing-options li").forEach((element) => {
+  document.querySelectorAll(".interview-video-grid, .about-portrait, .process li, .pricing-options li, .excerpts .excerpt").forEach((element) => {
     element.classList.add("will-reveal");
     revealObserver.observe(element);
   });
@@ -96,3 +96,4 @@ document.addEventListener("click", (event) => {
   if (!siteHeader.contains(event.target)) closeMenu();
 });
 mobileNav.addEventListener("change", () => closeMenu());
+
