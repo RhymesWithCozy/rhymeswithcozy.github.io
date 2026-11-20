@@ -79,52 +79,6 @@ figcaption { margin-top: 24px; }
 .excerpt blockquote { position: relative; }
 .quote-opening { position: absolute; right: 100%; }
 .excerpt + .excerpt { margin-top: 40px; }
-#quotes.is-rotating {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  overflow: hidden;
-}
-.is-rotating .excerpt {
-  grid-area: 1 / 1;
-  margin-top: 0;
-  visibility: hidden;
-  background: var(--accent);
-}
-.is-rotating .excerpt.is-current,
-.is-rotating .excerpt.is-outgoing { visibility: visible; }
-@media (prefers-reduced-motion: no-preference) {
-  .is-rotating .excerpt.is-current.is-entering { animation: quote-slide-in 1.4s ease-in-out both; }
-  .is-rotating .excerpt.is-outgoing { animation: quote-slide-out 1.4s ease-in-out both; }
-}
-@keyframes quote-slide-in {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-@keyframes quote-slide-out {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-.quote-controls { display: flex; flex-wrap: wrap; margin-top: 18px; }
-.quote-controls button {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-}
-.quote-controls button::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-}
-.quote-controls button[aria-current="true"]::before { background: currentColor; }
-.quote-controls button:hover::before { outline: 1px solid currentColor; outline-offset: 3px; }
 .process ol { list-style: none; padding: 0; margin: 0; counter-reset: steps; }
 .process li { counter-increment: steps; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 3rem 1fr; gap: 10px; align-items: baseline; padding: 20px 0; }
 .process h3 { margin: 0; font: 400 clamp(1.65rem, 3vw, 3rem)/1.05 var(--display); }
@@ -378,7 +332,8 @@ body { font-size: 1.1875rem; }
   font: 700 clamp(1.375rem, 2.1vw, 2rem)/1.25 var(--body);
   max-width: 48ch;
 }
-.excerpts, .is-rotating .excerpt { background: var(--ink); }
+.excerpts { background: var(--ink); }
+.excerpt-content { min-width: 0; }
 .process h3, .pricing-options h3 {
   font: 600 clamp(1.4rem, 2.4vw, 2.45rem)/1.1 var(--body);
   letter-spacing: -.025em;
@@ -476,30 +431,6 @@ body { font-size: 1.1875rem; }
 .contact a[href^="mailto:"] { text-decoration: none; }
 .contact a[href^="mailto:"]:hover { text-decoration: underline; }
 .contact .lead + p { margin-bottom: 0; }
-
-.excerpts.scroll-quotes { position: relative; background: transparent; isolation: isolate; }
-.excerpts.scroll-quotes::before { display: none; }
-.scroll-quotes > .editorial {
-  position: sticky;
-  top: var(--quote-pin-top, 0px);
-  background: var(--quote-background, var(--ink));
-  box-shadow: 0 0 0 100vmax var(--quote-background, var(--ink));
-  clip-path: inset(0 -100vmax);
-}
-.scroll-quotes .excerpt-content { min-width: 0; }
-.scroll-quotes .quote-viewport { overflow: hidden; }
-.scroll-quotes #quotes { display: flex; align-items: flex-start; }
-.scroll-quotes .excerpt { flex: 0 0 100%; min-width: 0; margin: 0; padding-right: 8px; }
-.scroll-quotes .excerpt blockquote { max-width: 100%; }
-
-@media (prefers-reduced-motion: no-preference) {
-  .scroll-quotes #quotes { transition: transform .6s ease-in-out; }
-}
-
-.scroll-quotes .excerpt { background: transparent; }
-@media (prefers-reduced-motion: no-preference) {
-  .scroll-quotes > .editorial { transition: background-color .6s ease, box-shadow .6s ease; }
-}
 
 .menu-toggle { display: none; }
 @media (max-width: 740px) {
