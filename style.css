@@ -489,11 +489,12 @@ body { font-size: 1.1875rem; }
     top: 100%;
     left: auto;
     right: 0;
-    width: min(210px, calc(100vw - 40px));
-    padding: 10px 11px 18px 24px;
+    width: max-content;
+    max-width: calc(100vw - 40px);
+    padding: 10px 18px 18px;
     text-align: right;
     color: white;
-    background: var(--ink);
+    background: rgb(58 58 58 / .86);
   }
   .has-mobile-menu.menu-open #main-nav { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
   .has-mobile-menu #main-nav a { display: block; padding: 14px 0; font-size: 1rem; }
